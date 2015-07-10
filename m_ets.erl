@@ -17,5 +17,8 @@ delete () ->
     ets:delete (test).
 
 
-find () ->
-    ets:lookup (test, a).
+find (Key) ->
+    ets:lookup (test, Key).
+
+update (Key, Value) ->
+    ets:update_element (test, Key, {2, Value}).
