@@ -1,3 +1,8 @@
+%% ===================================================================
+%% Author xiaotie
+%% 2015-6-17
+%% 
+%% ===================================================================
 -module(t_supervisor2).
 
 -behaviour(supervisor).
@@ -11,12 +16,16 @@
 %% Helper macro for declaring children of supervisor
 -define(CHILD(I, Type), {I, {I, start_link, []}, permanent, 5000, Type, [I]}).
 
+
+
 %% ===================================================================
 %% API functions
 %% ===================================================================
 
 start_link() ->
     supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+
+
 
 %% ===================================================================
 %% Supervisor callbacks

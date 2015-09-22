@@ -1,7 +1,7 @@
 %% ===================================================================
 %% Author xiaotie
 %% 2015-6-17
-%% mongo client pool manager
+%% 
 %% ===================================================================
 -module(t_gen_server).
 
@@ -24,6 +24,7 @@ start_link() ->
     gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
 
 
+
 %% ===================================================================
 %% gen_server callbacks
 %% ===================================================================
@@ -34,6 +35,7 @@ handle_cast(_Msg, State) -> {noreply, State}.
 handle_info(_Info, State) -> {noreply, State}.
 terminate(_Reason, _State) -> ok.
 code_change(_OldVer, State, _Extra) -> {ok, State}.
+
 
 
 %% ===================================================================
