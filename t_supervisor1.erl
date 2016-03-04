@@ -14,7 +14,11 @@
 -export([init/1]).
 
 %% Helper macro for declaring children of supervisor
--define(CHILD(Mod, Args), {Mod, {Mod, start_link, Args}, temporary, brutal_kill, worker, [Mod]}).
+-define(CHILD(Mod, Args), #{id        => Mod,
+                            start     => {Mod, start_link, Args},
+                            restart   => permanent,
+                            shutdown  => brutal_kill,
+                            type      => worker}).
 
 
 
@@ -32,4 +36,4 @@ start_link() ->
 %% ===================================================================
 
 init([]) ->
-    {ok, { {simple_one_for_one, 0, 1}, [?CHILD(mcp_worker, [])] } }.
+    {ok, { {simple_one_for_one, 5, 10}, [?CHILD(mcp_worker, [])] } }.
